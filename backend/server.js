@@ -26,4 +26,22 @@ app.get("/api/sessions", (req, res) => {
     res.json(sessions);
 });
 
+app.post("/api/keystroke", (req, res) => {
+    const { keystrokes } = req.body;
+
+    let pauses = 0;
+
+    for (let i = 1; i < keystrokes.length; i++) {
+        if (keystrokes[i] - keystrokes[i - 1] > 500) {
+            pauses++;
+        }
+    }
+
+    res.json({
+        totalKeystrokes: keystrokes.length,
+        pauseCount: pauses
+    });
+});
+
+
 app.listen(5000);
