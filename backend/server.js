@@ -43,5 +43,14 @@ app.post("/api/keystroke", (req, res) => {
     });
 });
 
+app.post("/api/paste", (req, res) => {
+    const { pasteDetected } = req.body;
+
+    res.json({
+        pasteDetected,
+        status: pasteDetected ? "Suspicious" : "Normal"
+    });
+});
+
 
 app.listen(5000);
