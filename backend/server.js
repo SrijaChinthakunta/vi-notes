@@ -3,7 +3,12 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"]
+}));
+
 app.use(express.json());
 
 let sessions = [];
@@ -57,6 +62,7 @@ app.post("/api/clear-sessions", (req, res) => {
     res.json({ message: "All sessions cleared" });
 });
 
-
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
