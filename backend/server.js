@@ -52,5 +52,9 @@ app.post("/api/paste", (req, res) => {
     });
 });
 
+app.post("/api/clear-sessions", (req, res) => {
+    sessions = [];
+    res.json({ message: "All sessions cleared" });
+});
 
 app.listen(5000);
