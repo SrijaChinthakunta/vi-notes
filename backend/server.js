@@ -57,4 +57,6 @@ app.post("/api/clear-sessions", (req, res) => {
     res.json({ message: "All sessions cleared" });
 });
 
-app.listen(5000);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT);
